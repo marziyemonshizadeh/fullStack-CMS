@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ModalsTemplate from "../modalsTemplate/modalsTemplate";
+import ModalsTemplate from "../../../modules/modalsTemplate/modalsTemplate";
 export default function AddCourseModal({ closeAddCourseModal }) {
   const {
     register,
@@ -19,7 +19,7 @@ export default function AddCourseModal({ closeAddCourseModal }) {
     }).then((res) => {
       if (res.status === 201) {
         reset();
-        setShowAddCourseModal((prev) => !prev);
+        closeAddCourseModal();
         toast.success("! دوره ی مورد نظر با موفقیت اضافه شد", {
           position: "bottom-left",
           autoClose: 5000,

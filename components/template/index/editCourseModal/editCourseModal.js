@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
-import ModalsTemplate from "../modalsTemplate/modalsTemplate";
+import ModalsTemplate from "../../../modules/modalsTemplate/modalsTemplate";
 
 export default function EditCourseModal({ closeEditCourseModal }) {
   const {

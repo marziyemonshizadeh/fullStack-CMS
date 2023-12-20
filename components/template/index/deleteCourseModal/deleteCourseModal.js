@@ -1,4 +1,4 @@
-import ModalsTemplate from "../modalsTemplate/modalsTemplate";
+import ModalsTemplate from "../../../modules/modalsTemplate/modalsTemplate";
 
 export default function DeleteCourseModal({ closeDeleteCourseModal }) {
   return (
