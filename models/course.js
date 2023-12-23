@@ -6,6 +6,23 @@ const schema = mongoose.Schema({
     type: String,
     required: true,
   },
+  // img: {
+  //   type: String,
+  //   required: true,
+  // },
+  // price: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // teacher: {
+  //   type: String,
+  //   required: true,
+  // },
 });
-const model = mongoose.model("course", schema);
+
+//have error
+const model = mongoose.models.course || mongoose.model("course", schema);
 export default model;
+
+//solved error by
+// module.exports = mongoose.models.course || mongoose.model("course", schema);
