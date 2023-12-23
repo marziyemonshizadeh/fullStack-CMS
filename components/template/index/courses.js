@@ -1,19 +1,10 @@
 import CourseCard from "@/components/modules/courseCard/courseCard";
 import { useState } from "react";
 import AddCourseModal from "./addCourseModal/addCourseModal";
-import DeleteCourseModal from "./deleteCourseModal/deleteCourseModal";
-import EditCourseModal from "./editCourseModal/editCourseModal";
 
-export default function Title({ courses }) {
+export default function Courses({ courses }) {
   const [showAddCourseModal, setShowAddCourseModal] = useState(false);
   const closeAddCourseModal = () => setShowAddCourseModal((prev) => !prev);
-
-  const [showDeleteCourseModal, setShowDeleteCourseModal] = useState(false);
-  const closeDeleteCourseModal = () =>
-    setShowDeleteCourseModal((prev) => !prev);
-
-  const [showEditCourseModal, setShowEditCourseModal] = useState(false);
-  const closeEditCourseModal = () => setShowEditCourseModal((prev) => !prev);
   return (
     <>
       {/* ADD COURSE BTN */}
@@ -33,20 +24,14 @@ export default function Title({ courses }) {
           <CourseCard
             src="https://faradars.org/wp-content/uploads/2018/03/fvds9612-png.png"
             title={item.title}
-            closeDeleteCourseModal={closeDeleteCourseModal}
-            closeEditCourseModal={closeEditCourseModal}
+            id={item._id}
+            key={item._id}
           />
         );
       })}
       {/* MODALS */}
       {showAddCourseModal && (
         <AddCourseModal closeAddCourseModal={closeAddCourseModal} />
-      )}
-      {showDeleteCourseModal && (
-        <DeleteCourseModal closeDeleteCourseModal={closeDeleteCourseModal} />
-      )}
-      {showEditCourseModal && (
-        <EditCourseModal closeEditCourseModal={closeEditCourseModal} />
       )}
     </>
   );

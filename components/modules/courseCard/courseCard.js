@@ -1,11 +1,37 @@
+import DeleteCourseModal from "@/components/template/index/deleteCourseModal/deleteCourseModal";
+import EditCourseModal from "@/components/template/index/editCourseModal/editCourseModal";
 import Link from "next/link";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function CourseCard({
-  src,
-  title,
-  closeDeleteCourseModal,
-  closeEditCourseModal,
-}) {
+export default function CourseCard({ src, title, id }) {
+  const [showDeleteCourseModal, setShowDeleteCourseModal] = useState(false);
+  const closeDeleteCourseModal = () =>
+    setShowDeleteCourseModal((prev) => !prev);
+
+  const [showEditCourseModal, setShowEditCourseModal] = useState(false);
+  const closeEditCourseModal = () => setShowEditCourseModal((prev) => !prev);
+
+  const removeCourse = async () => {
+    const res = await fetch(`/api/courses/${id}`, {
+      method: "DELETE",
+    });
+
+    if (res.status === 200) {
+      setShowEditCourseModal(false);
+      toast.success("! دوره ی مورد نظر با موفقیت اضافه شد", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
   return (
     <>
       <Link
@@ -42,6 +68,15 @@ export default function CourseCard({
           </button>
         </section>
       </Link>
+      {showDeleteCourseModal && (
+        <DeleteCourseModal
+          removeHandler={removeCourse}
+          closeDeleteCourseModal={closeDeleteCourseModal}
+        />
+      )}
+      {showEditCourseModal && (
+        <EditCourseModal closeEditCourseModal={closeEditCourseModal} />
+      )}
     </>
   );
 }
