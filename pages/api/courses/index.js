@@ -2,7 +2,17 @@ const { default: connectToDB } = require("@/utils/db");
 import CourseModel from "@/models/course";
 const handler = async (req, res) => {
   connectToDB();
-  if (req.method === "POST") {
+  if (req.method === "GET") {
+    console.log(req.query);
+    if (req.query.q) {
+      const { q } = req.query;
+      const courses = await CourseModel.find({ title: { $regex: q } });
+      res.json(courses);
+    } else {
+      const courses = await CourseModel.find({});
+      return res.json(courses);
+    }
+  } else if (req.method === "POST") {
     try {
       const { title } = req.body;
       // title.trim() === '' mosavi ba !title.trim()
