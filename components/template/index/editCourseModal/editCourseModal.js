@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
 import ModalsTemplate from "../../../modules/modalsTemplate/modalsTemplate";
 
-export default function EditCourseModal({ closeEditCourseModal }) {
+export default function EditCourseModal({ editHandler, closeEditCourseModal }) {
   const {
     register,
     reset,
@@ -10,18 +10,21 @@ export default function EditCourseModal({ closeEditCourseModal }) {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    await fetch("api/courses", {
-      method: "PUT",
-      headers: {
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res) => {
-      console.log("put res =>", res);
-      closeEditCourseModal();
-      reset();
-      return res.data;
-    });
+    editHandler(data);
+    reset();
+    // if (res.status === 200) {
+    //   closeEditCourseModal();
+    //   toast.success("! دوره ی مورد نظر با موفقیت آپدیت شد", {
+    //     position: "bottom-left",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    // }
   };
   return (
     <ModalsTemplate>
@@ -44,10 +47,10 @@ export default function EditCourseModal({ closeEditCourseModal }) {
           type="submit"
           className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
-          اضافه کردن
+          آپدیت کردن
         </button>
         <button
-          type="submit"
+          type="button"
           className="text-white bg-gradient-to-r from-slate-500 via-slate-600 to-slate-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-slate-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           onClick={() => {
             closeEditCourseModal();
