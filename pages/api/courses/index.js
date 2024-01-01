@@ -14,12 +14,12 @@ const handler = async (req, res) => {
     }
   } else if (req.method === "POST") {
     try {
-      const { title } = req.body;
+      const { title, img, price, teacher } = req.body;
       // title.trim() === '' mosavi ba !title.trim()
       if (!title.trim() || title.length < 8) {
         return res.status(422).json({ message: "title is not valid !!!" });
       }
-      await CourseModel.create({ title });
+      await CourseModel.create({ title, img, price, teacher });
       return res.status(201).json({ message: "course created successfully" });
     } catch (err) {
       return res.status(500).json({ message: "internal server error !!!" });
