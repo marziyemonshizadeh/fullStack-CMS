@@ -9,7 +9,7 @@ export default function Navbar() {
   const searchHandler = () => {
     console.log(search);
     // search.trim() <===> search !== undefined
-    if (search.trim()) {
+    if (search !== undefined) {
       router.push(`/search?q=${search}`);
     }
   };
@@ -26,7 +26,7 @@ export default function Navbar() {
         </span>
         <input
           type="text"
-          placeholder="جستجو کنید ..."
+          placeholder="دوره ی مورد نظر را جستجو کنید ..."
           value={search}
           onChange={(event) => setSearch(event.target.value)}
           className="h-8 p-4 md:min-w-[500px] rounded-lg bg-slate-100"
