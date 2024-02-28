@@ -1,10 +1,13 @@
 import User from "@/components/template/users/user";
 import usersModel from "@/models/user.js";
 import connectToDB from "@/utils/db";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function users({ users }) {
   return (
     <div>
+      <ToastContainer />
       <User users={users} />
     </div>
   );

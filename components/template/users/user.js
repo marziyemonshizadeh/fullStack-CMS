@@ -32,6 +32,8 @@ export default function User({ users }) {
       {data?.map((i) => {
         return (
           <UserCard
+            key={i._id}
+            id={i._id}
             username={i.userName}
             status={i.status}
             purchases={i.purchases}

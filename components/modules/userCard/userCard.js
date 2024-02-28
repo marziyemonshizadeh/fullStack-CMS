@@ -1,22 +1,23 @@
-import DeleteCourseModal from "@/components/template/index/deleteCourseModal/deleteCourseModal";
+import DeleteCourseModal from "@/components/template/index/deleteModal";
 import EditCourseModal from "@/components/template/index/editCourseModal/editCourseModal";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function UserCard({ username, status, purchases, email }) {
+export default function UserCard({ id, username, status, purchases, email }) {
   const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
   const closeDeleteUserModal = () => setShowDeleteUserModal((prev) => !prev);
 
   const [showEditUserModal, setShowEditUserModal] = useState(false);
   const closeEditUserModal = () => setShowEditUserModal((prev) => !prev);
-
-  const removeCourse = async () => {
+  const removeUser = async () => {
     const res = await fetch(`/api/users/${id}`, {
       method: "DELETE",
     });
 
     if (res.status === 200) {
       setShowEditUserModal(false);
-      toast.success("! دوره ی مورد نظر با موفقیت حذف شد", {
+      toast.success("!  ::کاربر مورد نظر با موفقیت حذف شد", {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
@@ -26,6 +27,9 @@ export default function UserCard({ username, status, purchases, email }) {
         progress: undefined,
         theme: "light",
       });
+    } else {
+      console.log("user delete toast have error", res.status);
+      alert("have a error !!!");
     }
   };
 
@@ -73,16 +77,16 @@ export default function UserCard({ username, status, purchases, email }) {
           />
           <div className="leading-8">
             <p className="flex text-center font-bold tracking-tight text-gray-600">
-              نام کاربری = <span className="text-lg"> {username}</span>
+              نام کاربری <span className="mx-2">: {username}</span>
             </p>
             <p className="flex text-center font-bold tracking-tight text-gray-600">
-              تعدا خرید = <span className="text-lg"> {purchases}</span>
+              تعدا خرید <span className="mx-2">: {purchases}</span>
             </p>
             <p className="flex text-center font-bold tracking-tight text-gray-600">
-              ایمیل = <span className="text-lg">{email}</span>
+              ایمیل <span className="mx-2">: {email}</span>
             </p>
             <p className="flex text-center font-bold tracking-tight text-gray-600">
-              وضعیت = <span className="text-lg">{status} </span>
+              وضعیت <span className="mx-2">: {status} </span>
             </p>
           </div>
         </section>
@@ -111,8 +115,8 @@ export default function UserCard({ username, status, purchases, email }) {
       </div>
       {showDeleteUserModal && (
         <DeleteCourseModal
-          removeHandler={removeCourse}
-          closeDeleteCourseModal={closeDeleteUserModal}
+          removeHandler={removeUser}
+          closeDeleteModal={closeDeleteUserModal}
         />
       )}
       {showEditUserModal && (
