@@ -1,5 +1,5 @@
 import DeleteCourseModal from "@/components/template/index/deleteModal";
-import EditCourseModal from "@/components/template/index/editCourseModal/editCourseModal";
+import EditUserModal from "@/components/template/users/editUserModal";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -39,7 +39,7 @@ export default function UserCard({ id, username, status, purchases, email }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title: data.title }),
+      body: JSON.stringify({ userName: data.userName }),
     });
     if (res.status === 200) {
       closeEditUserModal();
@@ -120,7 +120,7 @@ export default function UserCard({ id, username, status, purchases, email }) {
         />
       )}
       {showEditUserModal && (
-        <EditCourseModal
+        <EditUserModal
           editHandler={updateUser}
           closeEditCourseModal={closeEditUserModal}
         />
