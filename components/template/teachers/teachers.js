@@ -3,9 +3,11 @@ import { useState } from "react";
 import AddCourseModal from "../index/addCourseModal/addCourseModal";
 import TeacherCard from "./teacherCard";
 
-export default function Teachers() {
+export default function Teachers({ teachers }) {
   const [showAddUserModal, setShowAddUserModal] = useState(false);
   const closeAddUserModal = () => setShowAddUserModal((prev) => !prev);
+
+  const [data, setData] = useState([...teachers]);
   const getTeachers = async () => {
     const res = await fetch(`/api/Teachers`);
     const teachersData = await res.json();
@@ -24,11 +26,17 @@ export default function Teachers() {
         btnText="اضافه کردن  استاد جدید"
         clickHandler={closeAddUserModal}
       />
-
-      <TeacherCard />
-      <TeacherCard />
-      <TeacherCard />
-      <TeacherCard />
+      {data?.map((i) => {
+        return (
+          <TeacherCard
+            key={i._id}
+            id={i._id}
+            name={i.name}
+            email={i.email}
+            course={i.course}
+          />
+        );
+      })}
 
       {/* MODALS */}
       {showAddUserModal && (
