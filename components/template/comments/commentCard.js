@@ -1,22 +1,21 @@
 export default function CommentCard() {
   return (
     <div className="flex md:flex-row flex-col justify-around items-center  bg-white border border-gray-200 rounded-lg  w-full my-4 p-4 shadow-lg hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-      <p className="flex text-center font-bold tracking-tight text-gray-600 max-w-[200px]">
-        <span>کامنت=</span>
+      <p className="flex text-center  tracking-tight text-gray-600 max-w-[200px]">
+        {/* <span>کامنت=</span> */}
         درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم
-        افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی
       </p>
-      <p className="flex text-center font-bold tracking-tight text-gray-600">
-        <span>نام کاربری=</span>
+      <p className="flex text-center font-medium tracking-tight text-gray-600">
+        {/* <span>نام کاربری=</span> */}
         mmmm
       </p>
-      <p className="flex text-center font-bold tracking-tight text-gray-600">
-        <span>ایمیل =</span>
+      <p className="flex text-center font-medium tracking-tight text-gray-600">
+        {/* <span>ایمیل =</span> */}
         marziehmonshizade@yahoo.com
       </p>
-      <p className="flex text-center font-bold tracking-tight text-gray-600">
-        <span>نام درس =</span>
-        gosaste
+      <p className="flex text-center font-medium tracking-tight text-gray-600">
+        {/* <span>نام درس =</span> */}
+        React js
       </p>
       <button
         type="button"

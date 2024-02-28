@@ -1,6 +1,6 @@
 export default function aboutUs() {
   return (
-    <div className="my-4">
+    <div className="m-4">
       <header className="text-2xl font-bold tracking-tight mb-8">
         درباره ی ما
       </header>

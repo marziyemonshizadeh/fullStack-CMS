@@ -6,7 +6,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <ul className="md:p-3 p-1 flex justify-between md:block shadow md:shadow-none sticky text-base px-3 font-bold tracking-tight select-none">
+      <ul className="md:p-3 p-1 flex justify-between md:block shadow md:shadow-none sticky text-base px-3 font-bold tracking-tight">
         <li className="text-2xl font-bold tracking-tight md:block hidden">
           داشبورد
         </li>
@@ -15,7 +15,8 @@ export default function Sidebar() {
             href="/"
             className={router.pathname == "/" ? "text-teal-400" : ""}
           >
-            صفحه ی اصلی
+            دوره ها
+            {/* صفحه ی اصلی */}
           </Link>
         </li>
         <li className="py-5">
@@ -24,6 +25,22 @@ export default function Sidebar() {
             className={router.pathname == "/users" ? "text-teal-400" : ""}
           >
             کاربران
+          </Link>
+        </li>
+        <li className="py-5">
+          <Link
+            href="teachers"
+            className={router.pathname == "/teachers" ? "text-teal-400" : ""}
+          >
+            اساتید
+          </Link>
+        </li>
+        <li className="py-5">
+          <Link
+            href="comments"
+            className={router.pathname == "/comments" ? "text-teal-400" : ""}
+          >
+            کامنت ها
           </Link>
         </li>
         <li className="py-5">
