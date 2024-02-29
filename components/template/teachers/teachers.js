@@ -1,11 +1,11 @@
 import PagesHeader from "@/components/modules/pagesHeader/pagesHeader";
 import { useState } from "react";
-import AddCourseModal from "../index/addCourseModal/addCourseModal";
+import AddTeacherModal from "./addTeacherModal";
 import TeacherCard from "./teacherCard";
 
 export default function Teachers({ teachers }) {
-  const [showAddUserModal, setShowAddUserModal] = useState(false);
-  const closeAddUserModal = () => setShowAddUserModal((prev) => !prev);
+  const [showAddTeacherModal, setShowAddTeacherModal] = useState(false);
+  const closeAddTeacherModal = () => setShowAddTeacherModal((prev) => !prev);
 
   const [data, setData] = useState([...teachers]);
   const getTeachers = async () => {
@@ -24,7 +24,7 @@ export default function Teachers({ teachers }) {
       <PagesHeader
         title="اساتید"
         btnText="اضافه کردن  استاد جدید"
-        clickHandler={closeAddUserModal}
+        clickHandler={closeAddTeacherModal}
       />
       {data?.map((i) => {
         return (
@@ -39,10 +39,10 @@ export default function Teachers({ teachers }) {
       })}
 
       {/* MODALS */}
-      {showAddUserModal && (
-        <AddCourseModal
-          getCourses={getTeachers}
-          closeAddCourseModal={closeAddUserModal}
+      {showAddTeacherModal && (
+        <AddTeacherModal
+          getTeachers={getTeachers}
+          closeAddCourseModal={closeAddTeacherModal}
         />
       )}
     </div>
