@@ -17,5 +17,5 @@ const schema = mongoose.Schema(
     timestamps: true,
   }
 );
-const model = mongoose.models.teacher || mongoose.model("teacher", schema);
+const model = mongoose.models.comment || mongoose.model("comment", schema);
 export default model;

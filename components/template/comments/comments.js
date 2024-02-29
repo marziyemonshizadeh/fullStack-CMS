@@ -3,18 +3,18 @@ import { useState } from "react";
 import AddCourseModal from "../index/addCourseModal/addCourseModal";
 import CommentCard from "./commentCard";
 
-export default function Comments() {
+export default function Comments({ comments }) {
   const [showAddUserModal, setShowAddUserModal] = useState(false);
   const closeAddUserModal = () => setShowAddUserModal((prev) => !prev);
-  const getTeachers = async () => {
-    const res = await fetch(`/api/Teachers`);
-    const teachersData = await res.json();
+  const [data, setData] = useState([...comments]);
 
-    console.log("Res =>", res);
+  const getComments = async () => {
+    const res = await fetch(`/api/comments`);
+    const commentsData = await res.json();
 
     if (res.status === 200) {
-      console.log(teachersData);
-      setData(teachersData);
+      console.log(commentsData);
+      setData(commentsData);
     }
   };
   return (
@@ -27,11 +27,14 @@ export default function Comments() {
         <p> نام درس</p>
         <p> تسک</p>
       </div>
-      <CommentCard />
+      {data?.map((i) => {
+        return <CommentCard key={i._id} id={i._id} body={i.body} />;
+      })}
+
       {/* MODALS */}
       {showAddUserModal && (
         <AddCourseModal
-          getCourses={getTeachers}
+          getCourses={getComments}
           closeAddCourseModal={closeAddUserModal}
         />
       )}

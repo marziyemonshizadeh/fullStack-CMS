@@ -13,18 +13,6 @@ const handler = async (req, res) => {
       const comments = await commentModel.find({});
       return res.json(comments);
     }
-  } else if (req.method === "POST") {
-    try {
-      const { body } = req.body;
-      // title.trim() === '' mosavi ba !title.trim()
-      if (!body.trim()) {
-        return res.status(422).json({ message: "body is required field !!!" });
-      }
-      await commentModel.create({ body });
-      return res.status(201).json({ message: "teacher created successfully" });
-    } catch (err) {
-      return res.status(500).json({ message: "internal server error !!!" });
-    }
   }
 };
 export default handler;
