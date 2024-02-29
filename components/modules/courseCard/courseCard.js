@@ -1,4 +1,4 @@
-import DeleteCourseModal from "@/components/template/index/deleteCourseModal/deleteCourseModal";
+import DeleteCourseModal from "@/components/template/index/deleteModal";
 import EditCourseModal from "@/components/template/index/editCourseModal/editCourseModal";
 import Link from "next/link";
 import { useState } from "react";
@@ -20,7 +20,7 @@ export default function CourseCard({ src, title, id }) {
 
     if (res.status === 200) {
       setShowEditCourseModal(false);
-      toast.success("! دوره ی مورد نظر با موفقیت اضافه شد", {
+      toast.success("! دوره ی مورد نظر با موفقیت حذف شد", {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
@@ -112,7 +112,7 @@ export default function CourseCard({ src, title, id }) {
       {showDeleteCourseModal && (
         <DeleteCourseModal
           removeHandler={removeCourse}
-          closeDeleteCourseModal={closeDeleteCourseModal}
+          closeDeleteModal={closeDeleteCourseModal}
         />
       )}
       {showEditCourseModal && (

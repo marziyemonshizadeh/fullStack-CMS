@@ -12,19 +12,6 @@ export default function EditCourseModal({ editHandler, closeEditCourseModal }) {
   const onSubmit = async (data) => {
     editHandler(data);
     reset();
-    // if (res.status === 200) {
-    //   closeEditCourseModal();
-    //   toast.success("! دوره ی مورد نظر با موفقیت آپدیت شد", {
-    //     position: "bottom-left",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    // }
   };
   return (
     <ModalsTemplate>
