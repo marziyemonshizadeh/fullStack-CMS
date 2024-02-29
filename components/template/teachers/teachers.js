@@ -9,7 +9,7 @@ export default function Teachers({ teachers }) {
 
   const [data, setData] = useState([...teachers]);
   const getTeachers = async () => {
-    const res = await fetch(`/api/Teachers`);
+    const res = await fetch(`/api/teachers`);
     const teachersData = await res.json();
 
     console.log("Res =>", res);
@@ -42,7 +42,7 @@ export default function Teachers({ teachers }) {
       {showAddTeacherModal && (
         <AddTeacherModal
           getTeachers={getTeachers}
-          closeAddCourseModal={closeAddTeacherModal}
+          closeAddTeacherModal={closeAddTeacherModal}
         />
       )}
     </div>

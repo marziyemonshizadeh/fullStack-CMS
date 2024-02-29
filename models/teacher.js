@@ -11,6 +11,16 @@ const schema = mongoose.Schema(
       unique: true,
       uppercase: true,
     },
+    email: {
+      type: String,
+      match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      required: true,
+    },
+
+    course: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

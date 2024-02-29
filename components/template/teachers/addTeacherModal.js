@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ModalsTemplate from "../../modules/modalsTemplate/modalsTemplate";
-export default function AddTeacherModal({ getTeachers, closeAddCourseModal }) {
+export default function AddTeacherModal({ getTeachers, closeAddTeacherModal }) {
   const {
     register,
     reset,
@@ -31,7 +31,7 @@ export default function AddTeacherModal({ getTeachers, closeAddCourseModal }) {
           theme: "light",
         });
         reset();
-        closeAddCourseModal();
+        closeAddTeacherModal();
       } else if (res.status === 422) {
         toast.warning("! داده ی شما معتبر نمی باشد", {
           position: "bottom-left",
@@ -75,6 +75,28 @@ export default function AddTeacherModal({ getTeachers, closeAddCourseModal }) {
           <p className="text-red-700">لطفا نام استاد را وارد کنید !</p>
         )}
 
+        <input
+          type="email"
+          id="text"
+          placeholder="ایمیل"
+          className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          {...register("email", { required: true })}
+        />
+        {errors.email && (
+          <p className="text-red-700">لطفاایمیل را وارد کنید !</p>
+        )}
+
+        <input
+          type="text"
+          id="text"
+          placeholder="نام دوره"
+          className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          {...register("course", { required: true })}
+        />
+        {errors.course && (
+          <p className="text-red-700">لطفا نام دوره را وارد کنید !</p>
+        )}
+
         <button
           type="submit"
           className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -82,10 +104,10 @@ export default function AddTeacherModal({ getTeachers, closeAddCourseModal }) {
           اضافه کردن
         </button>
         <button
-          type="submit"
+          type="button"
           className="text-white bg-gradient-to-r from-slate-500 via-slate-600 to-slate-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-slate-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           onClick={() => {
-            closeAddCourseModal();
+            closeAddTeacherModal();
             reset();
           }}
         >
