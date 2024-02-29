@@ -6,17 +6,17 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function users({ users }) {
   return (
-    <div>
+    <>
       <ToastContainer />
       <User users={users} />
-    </div>
+    </>
   );
 }
 export async function getStaticProps(context) {
   // first connect to db
   connectToDB();
   const users = await usersModel.find({});
-  console.log("courses = ", users);
+  console.log("users = ", users);
   return {
     props: {
       users: JSON.parse(JSON.stringify(users)),
