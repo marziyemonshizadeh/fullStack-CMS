@@ -39,7 +39,7 @@ export default function UserCard({ id, username, status, purchases, email }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userName: data.userName }),
+      body: JSON.stringify(data),
     });
     if (res.status === 200) {
       closeEditUserModal();
@@ -121,6 +121,10 @@ export default function UserCard({ id, username, status, purchases, email }) {
       )}
       {showEditUserModal && (
         <EditUserModal
+          username={username}
+          status={status}
+          purchases={purchases}
+          email={email}
           editHandler={updateUser}
           closeEditCourseModal={closeEditUserModal}
         />

@@ -83,7 +83,7 @@ export default function AddUserModal({ getUsers, closeAddUserModal }) {
           {...register("status", { required: true })}
         />
         {errors.status && (
-          <p className="text-red-700">لطفا نام کاربر را وارد کنید !</p>
+          <p className="text-red-700">لطفا وضعیت کاربر را وارد کنید !</p>
         )}
         <input
           type="text"
@@ -93,7 +93,7 @@ export default function AddUserModal({ getUsers, closeAddUserModal }) {
           {...register("purchases", { required: true })}
         />
         {errors.purchases && (
-          <p className="text-red-700">لطفا نام کاربر را وارد کنید !</p>
+          <p className="text-red-700">لطفا تعداد خرید را وارد کنید !</p>
         )}
         <input
           type="email"
