@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteCourseModal from "../index/deleteModal";
 import EditTeacherModal from "./editTeacherModal";
 
-export default function TeacherCard({ id, name, email, course }) {
+export default function TeacherCard({ id, name, email }) {
   const [showDeleteTeacherModal, setShowDeleteTeacherModal] = useState(false);
   const closeDeleteTeacherModal = () =>
     setShowDeleteTeacherModal((prev) => !prev);
@@ -83,9 +83,6 @@ export default function TeacherCard({ id, name, email, course }) {
             </p>
             <p className="flex text-center font-bold tracking-tight text-gray-600">
               ایمیل <span className="mx-2">: {email}</span>
-            </p>
-            <p className="flex text-center font-bold tracking-tight text-gray-600">
-              نام درس <span className="mx-2">: {course}</span>
             </p>
           </div>
         </section>
