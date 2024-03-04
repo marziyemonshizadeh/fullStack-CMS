@@ -11,7 +11,7 @@ export default function Search({ courses }) {
           {courses.map((item) => {
             return (
               <CourseCard
-                src="https://faradars.org/wp-content/uploads/2018/03/fvds9612-png.png"
+                src={item.src}
                 title={item.title}
                 id={item._id}
                 key={item._id}
@@ -31,7 +31,9 @@ export async function getServerSideProps(context) {
   connectToDB();
   const { query } = context;
   console.log("query =", query);
-  const courses = await CourseModel.find({ title: { $regex: query.q } });
+  const courses = await CourseModel.find({
+    title: { $regex: query.q.toUpperCase() },
+  });
 
   return {
     props: {
