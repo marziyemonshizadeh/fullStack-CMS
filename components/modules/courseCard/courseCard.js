@@ -1,17 +1,22 @@
 import DeleteCourseModal from "@/components/template/index/deleteModal";
+import DetailsCourseModal from "@/components/template/index/detailsModal";
 import EditCourseModal from "@/components/template/index/editCourseModal/editCourseModal";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function CourseCard({ src, title, id }) {
+export default function CourseCard({ teacher, src, title, id, price }) {
   const [showDeleteCourseModal, setShowDeleteCourseModal] = useState(false);
   const closeDeleteCourseModal = () =>
     setShowDeleteCourseModal((prev) => !prev);
 
   const [showEditCourseModal, setShowEditCourseModal] = useState(false);
   const closeEditCourseModal = () => setShowEditCourseModal((prev) => !prev);
+
+  const [showDetailsCourseModal, setShowDetailsCourseModal] = useState(false);
+  const closeDetailsCourseModal = () =>
+    setShowDetailsCourseModal((prev) => !prev);
 
   const removeCourse = async () => {
     const res = await fetch(`/api/courses/${id}`, {
@@ -39,7 +44,7 @@ export default function CourseCard({ src, title, id }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title: data.title }),
+      body: JSON.stringify(data),
     });
     if (res.status === 200) {
       closeEditCourseModal();
@@ -78,7 +83,7 @@ export default function CourseCard({ src, title, id }) {
           <img
             className="object-fill h-auto max-w-full  md:rounded-r-lg  md:h-auto md:w-48 md:rounded-none  md:rounded-s-lg"
             src={src}
-            alt="course"
+            alt={title}
           />
           {/* title */}
           <h5 className="mb-2 text-2xl text-center font-bold tracking-tight mx-4 text-gray-600 dark:text-white">
@@ -107,6 +112,16 @@ export default function CourseCard({ src, title, id }) {
           >
             ویرایش
           </button>
+          <button
+            type="button"
+            className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            onClick={(e) => {
+              e.preventDefault();
+              closeDetailsCourseModal();
+            }}
+          >
+            جزئیات
+          </button>
         </section>
       </Link>
       {showDeleteCourseModal && (
@@ -117,8 +132,22 @@ export default function CourseCard({ src, title, id }) {
       )}
       {showEditCourseModal && (
         <EditCourseModal
+          price={price}
+          src={src}
+          title={title}
+          teacher={teacher}
           editHandler={updateCourse}
           closeEditCourseModal={closeEditCourseModal}
+        />
+      )}
+      {showDetailsCourseModal && (
+        <DetailsCourseModal
+          price={price}
+          src={src}
+          title={title}
+          teacher={teacher}
+          editHandler={updateCourse}
+          closeDetailsCourseModal={closeDetailsCourseModal}
         />
       )}
     </>

@@ -32,8 +32,10 @@ export default function Courses({ courses }) {
       {data?.map((item) => {
         return (
           <CourseCard
-            src="https://faradars.org/wp-content/uploads/2018/03/fvds9612-png.png"
+            teacher={item.teacher}
+            src={item.img}
             title={item.title}
+            price={item.price}
             id={item._id}
             key={item._id}
           />
