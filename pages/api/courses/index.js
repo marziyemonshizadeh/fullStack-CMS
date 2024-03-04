@@ -1,5 +1,6 @@
 const { default: connectToDB } = require("@/utils/db");
 import CourseModel from "@/models/course";
+
 const handler = async (req, res) => {
   connectToDB();
   if (req.method === "GET") {
@@ -9,7 +10,7 @@ const handler = async (req, res) => {
       const courses = await CourseModel.find({ title: { $regex: q } });
       res.json(courses);
     } else {
-      const courses = await CourseModel.find({});
+      const courses = await CourseModel.find({}).populate("teacher", "-__v");
       return res.json(courses);
     }
   } else if (req.method === "POST") {

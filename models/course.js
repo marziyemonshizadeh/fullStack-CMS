@@ -1,5 +1,6 @@
 // course is entity
 const { default: mongoose } = require("mongoose");
+const teachersModel = require("./teacher");
 
 const schema = mongoose.Schema({
   title: {
@@ -24,7 +25,8 @@ const schema = mongoose.Schema({
     required: true,
   },
   teacher: {
-    type: String,
+    type: mongoose.Types.ObjectId,
+    ref: "teacher",
     required: true,
   },
 });
