@@ -98,12 +98,12 @@ export default function AddCourseModal({ getCourses, closeAddCourseModal }) {
         <input
           type="text"
           id="text"
-          placeholder=" لطفا آیدی مدرس دوره را وارد کنید"
+          placeholder=" لطفا نام مدرس دوره را وارد کنید"
           className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           {...register("teacher", { required: true })}
         />
         {errors.teacher && (
-          <p className="text-red-700">! لطفا آیدی مدرس دوره را وارد کنید</p>
+          <p className="text-red-700">! لطفا نام مدرس دوره را وارد کنید</p>
         )}
 
         <button
