@@ -40,7 +40,7 @@ export default function TeacherCard({ id, name, email }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: data.name }),
+      body: JSON.stringify(data),
     });
     if (res.status === 200) {
       closeEditTeacherModal();
@@ -117,6 +117,8 @@ export default function TeacherCard({ id, name, email }) {
       )}
       {showEditTeacherModal && (
         <EditTeacherModal
+          name={name}
+          email={email}
           editHandler={updateTeacher}
           closeEditCourseModal={closeEditTeacherModal}
         />

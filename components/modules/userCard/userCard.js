@@ -79,12 +79,12 @@ export default function UserCard({ id, username, status, purchases, email }) {
             <p className="flex text-center font-bold tracking-tight text-gray-600">
               نام کاربری <span className="mx-2">: {username}</span>
             </p>
-            <p className="flex text-center font-bold tracking-tight text-gray-600">
+            {/* <p className="flex text-center font-bold tracking-tight text-gray-600">
               تعدا خرید <span className="mx-2">: {purchases}</span>
             </p>
             <p className="flex text-center font-bold tracking-tight text-gray-600">
               ایمیل <span className="mx-2">: {email}</span>
-            </p>
+            </p> */}
             <p className="flex text-center font-bold tracking-tight text-gray-600">
               وضعیت <span className="mx-2">: {status} </span>
             </p>

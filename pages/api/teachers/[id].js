@@ -20,10 +20,10 @@ const handler = async (req, res) => {
     }
   } else if (req.method === "PUT") {
     const { id } = req.query;
-    const { name } = req.body;
+    const { name, email } = req.body;
     if (isValidObjectId(id)) {
       try {
-        await teachersModel.findOneAndUpdate({ _id: id }, { name });
+        await teachersModel.findOneAndUpdate({ _id: id }, { name, email });
         return res.json({ message: "teacher Updated Successfully :))" });
       } catch (err) {
         return res.status(500).json({ message: "Internal server error !!" });
