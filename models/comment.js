@@ -6,12 +6,11 @@ const schema = mongoose.Schema(
       type: String,
       required: true,
     },
-
-    // course: {
-    //   type: mongoose.Types.ObjectId,
-    //   ref: "Course",
-    //   required: true,
-    // },
+    course: {
+      type: mongoose.Types.ObjectId,
+      ref: "course",
+      required: true,
+    },
   },
   {
     timestamps: true,
