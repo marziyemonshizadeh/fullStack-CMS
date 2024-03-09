@@ -1,6 +1,7 @@
 // course is entity
 const { default: mongoose } = require("mongoose");
 const teachersModel = require("./teacher");
+const commentsModel = require("./comment");
 
 const schema = mongoose.Schema({
   title: {
@@ -30,8 +31,12 @@ const schema = mongoose.Schema({
     required: true,
   },
 });
+schema.virtual("comments", {
+  ref: "comment",
+  localField: "_id",
+  foreignField: "course",
+});
 
-//have error
 const model = mongoose.models.course || mongoose.model("course", schema);
 export default model;
 
