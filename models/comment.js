@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const schema = mongoose.Schema(
+export const schema = mongoose.Schema(
   {
     body: {
       type: String,
