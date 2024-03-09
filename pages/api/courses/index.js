@@ -1,5 +1,6 @@
 const { default: connectToDB } = require("@/utils/db");
 import CourseModel from "@/models/course";
+import CourseValidator from "@/validators/course";
 
 const handler = async (req, res) => {
   connectToDB();
@@ -14,6 +15,10 @@ const handler = async (req, res) => {
       return res.json(courses);
     }
   } else if (req.method === "POST") {
+    const ValidationResult = CourseValidator(req.body);
+    if (ValidationResult !== true) {
+      return res.status(422).json(ValidationResult);
+    }
     try {
       const { title, img, price, teacher } = req.body;
       // title.trim() === '' mosavi ba !title.trim()
