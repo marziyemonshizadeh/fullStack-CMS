@@ -67,7 +67,7 @@ export default function AddUserModal({ getUsers, closeAddUserModal }) {
         </header>
         <input
           type="text"
-          id="text"
+          id="firstName"
           placeholder="نام "
           className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           {...register("firstName", { required: true })}
@@ -77,7 +77,7 @@ export default function AddUserModal({ getUsers, closeAddUserModal }) {
         )}
         <input
           type="text"
-          id="text"
+          id="lastName"
           placeholder="نام خانوادگی"
           className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           {...register("lastName", { required: true })}
@@ -87,7 +87,7 @@ export default function AddUserModal({ getUsers, closeAddUserModal }) {
         )}
         <input
           type="text"
-          id="text"
+          id="userName"
           placeholder="نام کاربر"
           className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           {...register("userName", { required: true })}
@@ -107,17 +107,17 @@ export default function AddUserModal({ getUsers, closeAddUserModal }) {
         )}
         <input
           type="text"
-          id="text"
+          id="role"
           placeholder="وضعیت کاربر"
           className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          {...register("status", { required: true })}
+          {...register("role", { required: true })}
         />
-        {errors.status && (
+        {errors.role && (
           <p className="text-red-700">لطفا وضعیت کاربر را وارد کنید !</p>
         )}
         <input
           type="text"
-          id="text"
+          id="purchases"
           placeholder=" تعداد خرید"
           className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           {...register("purchases", { required: true })}
