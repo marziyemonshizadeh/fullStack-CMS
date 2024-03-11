@@ -1,12 +1,25 @@
 const { default: mongoose } = require("mongoose");
 const schema = mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
   userName: {
     type: String,
     minLength: 3,
     maxLength: 12,
     required: true,
   },
-  status: {
+  // role admin or user . you can use enum
+  role: {
     type: String,
     required: true,
   },
