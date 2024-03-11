@@ -6,7 +6,7 @@ import AddUserModal from "./addUserModal";
 export default function User({ users }) {
   const [showAddUserModal, setShowAddUserModal] = useState(false);
   const closeAddUserModal = () => setShowAddUserModal((prev) => !prev);
-
+  console.log(users);
   //  for make real time => later use context
   const [data, setData] = useState([...users]);
   const getUsers = async () => {
@@ -35,7 +35,7 @@ export default function User({ users }) {
             key={i._id}
             id={i._id}
             username={i.userName}
-            status={i.status}
+            status={i.role}
             purchases={i.purchases}
             email={i.email}
           />

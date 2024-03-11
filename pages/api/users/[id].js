@@ -20,12 +20,12 @@ const handler = async (req, res) => {
     }
   } else if (req.method === "PUT") {
     const { id } = req.query;
-    const { username, status, purchases, email } = req.body;
+    const { username, role, purchases, email } = req.body;
     if (isValidObjectId(id)) {
       try {
         await usersModel.findOneAndUpdate(
           { _id: id },
-          { username, status, purchases, email }
+          { username, role, purchases, email }
         );
         return res.json({ message: "user Updated Successfully :))" });
       } catch (err) {

@@ -15,11 +15,27 @@ const handler = async (req, res) => {
     }
   } else if (req.method === "POST") {
     try {
-      const { userName, status, purchases, email } = req.body;
+      const {
+        firstName,
+        lastName,
+        userName,
+        password,
+        role,
+        purchases,
+        email,
+      } = req.body;
       if (!userName.trim() || userName.length < 4) {
         return res.status(422).json({ message: "userName is not valid !!" });
       }
-      await usersModel.create({ userName, status, purchases, email });
+      await usersModel.create({
+        firstName,
+        lastName,
+        userName,
+        password,
+        role,
+        purchases,
+        email,
+      });
       return res.status(201).json({ message: "user created successfully :))" });
     } catch (err) {
       return res

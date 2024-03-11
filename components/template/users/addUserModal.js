@@ -68,12 +68,42 @@ export default function AddUserModal({ getUsers, closeAddUserModal }) {
         <input
           type="text"
           id="text"
+          placeholder="نام "
+          className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          {...register("firstName", { required: true })}
+        />
+        {errors.firstName && (
+          <p className="text-red-700">لطفا نام را وارد کنید !</p>
+        )}
+        <input
+          type="text"
+          id="text"
+          placeholder="نام خانوادگی"
+          className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          {...register("lastName", { required: true })}
+        />
+        {errors.lastName && (
+          <p className="text-red-700">لطفا نام کاربر را وارد کنید !</p>
+        )}
+        <input
+          type="text"
+          id="text"
           placeholder="نام کاربر"
           className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           {...register("userName", { required: true })}
         />
         {errors.userName && (
           <p className="text-red-700">لطفا نام کاربر را وارد کنید !</p>
+        )}
+        <input
+          type="text"
+          id="password"
+          placeholder="رمز عبور"
+          className="bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          {...register("password", { required: true })}
+        />
+        {errors.password && (
+          <p className="text-red-700">لطفا رمز عبور را وارد کنید !</p>
         )}
         <input
           type="text"
