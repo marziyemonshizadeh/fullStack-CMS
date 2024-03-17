@@ -1,10 +1,18 @@
+import Link from "next/link";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTelegramPlane,
+  FaWhatsapp,
+} from "react-icons/fa";
 export default function aboutUs() {
   return (
     <div className="m-4">
       <header className="text-2xl font-bold tracking-tight mb-8">
         درباره ی ما
       </header>
-      <p className="leading-10">
+      <p className="leading-10 my-4">
         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
         از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
         سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
@@ -31,18 +39,45 @@ export default function aboutUs() {
         و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان
         رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد
         در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و
-        شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
+        شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروف چینی دستاوردهای
         اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-        قرار گیرد. و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد
-        استفاده قرار گیرد. و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا
-        مورد استفاده قرار گیرد. و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-        اساسا مورد استفاده قرار گیرد. و جوابگوی سوالات پیوسته اهل دنیای موجود
-        طراحی اساسا مورد استفاده قرار گیرد. و جوابگوی سوالات پیوسته اهل دنیای
-        موجود طراحی اساسا مورد استفاده قرار گیرد. و جوابگوی سوالات پیوسته اهل
-        دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. و جوابگوی سوالات پیوسته
-        اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. و جوابگوی سوالات
-        پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
       </p>
+      <div className="m-auto">
+        <header className="text-xl font-semibold tracking-tight mb-8">
+          اطلاعات تماس با ما
+        </header>
+        <section className="flex flex-col md:items-center justify-center items-center gap-y-4 text-xl">
+          <div>
+            <span className="text-lg font-bold">شماره تلفن : </span>
+            09354444444
+          </div>
+          <div>
+            <span className="text-lg font-bold">ایمیل : </span>
+            marziehmonshizade@yahoo.com
+          </div>
+          <div>
+            <span className="text-lg font-bold">نشانی : </span>
+            تهران - تهران
+          </div>
+          <div className="flex gap-2">
+            <Link href="#">
+              <FaInstagram className="text-3xl text-pink-700" />
+            </Link>
+            <Link href="#">
+              <FaTelegramPlane className="text-3xl text-cyan-500" />
+            </Link>
+            <Link href="https://www.linkedin.com/in/marzieh-monshizadeh-175a061a0">
+              <FaLinkedinIn className="text-3xl text-blue-900" />
+            </Link>
+            <Link href="https://github.com/marziyemonshizadeh">
+              <FaGithub className="text-3xl" />
+            </Link>
+            <Link href="#">
+              <FaWhatsapp className="text-3xl text-green-600" />
+            </Link>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

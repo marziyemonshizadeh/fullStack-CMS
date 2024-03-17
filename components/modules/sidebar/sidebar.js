@@ -45,18 +45,18 @@ export default function Sidebar() {
         </li>
         <li className="py-5">
           <Link
-            href="aboutUs"
-            className={router.pathname == "/aboutUs" ? "text-teal-400" : ""}
+            href="profile"
+            className={router.pathname == "/profile" ? "text-teal-400" : ""}
           >
-            درباره ی ما
+            پروفایل
           </Link>
         </li>
         <li className="py-5">
           <Link
-            href="contactUs"
-            className={router.pathname == "/contactUs" ? "text-teal-400" : ""}
+            href="aboutUs"
+            className={router.pathname == "/aboutUs" ? "text-teal-400" : ""}
           >
-            تماس با ما
+            درباره ی ما
           </Link>
         </li>
         <li className="py-5 md:border-t-2 border-gray-300">
