@@ -25,7 +25,7 @@ const handler = async (req, res) => {
       {
         email: tokenPayload.email,
       },
-      "firstName lastName role"
+      "firstName lastName userName role"
     );
 
     return res.status(200).json({ data: user });

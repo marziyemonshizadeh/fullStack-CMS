@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 export default function Navbar() {
   const router = useRouter();
   const [search, setSearch] = useState("");
-
+  const [userName, setUserName] = useState("");
   const searchHandler = () => {
     console.log(search);
     // search.trim() <===> search !== undefined
@@ -13,10 +13,17 @@ export default function Navbar() {
       router.push(`/search?q=${search}`);
     }
   };
-  console.log(router.query.q);
 
   useEffect(() => {
     setSearch(router.query.q);
+    const userAuth = async () => {
+      const res = await fetch("/api/auth/me");
+      if (res.status === 200) {
+        const { data } = await res.json();
+        setUserName(data.userName);
+      }
+    };
+    userAuth();
   }, []);
   return (
     <div className="flex justify-between items-center">
@@ -32,11 +39,14 @@ export default function Navbar() {
           className="h-8 p-4 md:min-w-[500px] rounded-lg bg-slate-100"
         />
       </div>
-      <img
-        alt="profile"
-        src="https://pics.craiyon.com/2023-06-20/89f79a8dee744596981e7417b8a7ea1d.webp"
-        className="rounded-full w-12"
-      />
+      <div className="flex justify-center items-center gap-2">
+        <span className="font-mono">{userName}</span>
+        <img
+          alt="profile"
+          src="https://pics.craiyon.com/2023-06-20/89f79a8dee744596981e7417b8a7ea1d.webp"
+          className="rounded-full w-12"
+        />
+      </div>
     </div>
   );
 }
