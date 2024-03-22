@@ -22,7 +22,7 @@ const handler = async (req, res) => {
     }
     //2- is user exist
     const isUserExist = await userModel.findOne({
-      $or: [{ userName, email }],
+      $or: [{ userName }, { email }],
     });
 
     if (isUserExist) {
