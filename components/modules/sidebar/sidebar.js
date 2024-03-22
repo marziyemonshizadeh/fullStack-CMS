@@ -21,6 +21,18 @@ export default function Sidebar() {
 
     userAuth();
   });
+
+  const signOut = async () => {
+    const res = await fetch("/api/auth/signout");
+    if (res.status === 200) {
+      setIsLoggedIn(false);
+      setIsAdmin(false);
+
+      alert("User Logged Out Successfully :))");
+
+      router.replace("/login");
+    }
+  };
   return (
     <>
       <ul className="md:p-3 p-1 flex justify-between md:block shadow md:shadow-none sticky text-base px-3 font-bold tracking-tight">
@@ -119,7 +131,7 @@ export default function Sidebar() {
           </Link>
         </li>
         {isLoggedIn && (
-          <li className="py-5 md:border-t-2 border-gray-300">
+          <li className="py-5 md:border-t-2 border-gray-300" onClick={signOut}>
             <Link href="#"> خروج</Link>
           </li>
         )}
