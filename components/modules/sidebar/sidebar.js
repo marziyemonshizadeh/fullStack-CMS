@@ -5,12 +5,17 @@ import { useEffect, useState } from "react";
 export default function Sidebar() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const userAuth = async () => {
       const res = await fetch("/api/auth/me");
       if (res.status === 200) {
         setIsLoggedIn(true);
+        const { data: user } = await res.json();
+        if (user.role === "ADMIN") {
+          setIsAdmin(true);
+        }
       }
     };
 
@@ -69,14 +74,18 @@ export default function Sidebar() {
                 پروفایل
               </Link>
             </li>
-            <li className="py-5">
-              <Link
-                href="p-admin"
-                className={router.pathname == "/p-admin" ? "text-teal-400" : ""}
-              >
-                پنل ادمین
-              </Link>
-            </li>
+            {isAdmin && (
+              <li className="py-5">
+                <Link
+                  href="p-admin"
+                  className={
+                    router.pathname == "/p-admin" ? "text-teal-400" : ""
+                  }
+                >
+                  پنل ادمین
+                </Link>
+              </li>
+            )}
           </>
         ) : (
           <>
