@@ -1,19 +1,56 @@
+import apiRequests from "@/configs/configs";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export default function LogIn() {
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const router = useRouter();
+  const { register, reset, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    console.log("clicked");
-    console.log(data);
-    reset();
+    const res = await apiRequests
+      .post("auth/signin", JSON.stringify(data))
+      .then((res) => res.data)
+      .then(() => {
+        alert("Logged In Successfully :))");
+        reset();
+        router.replace("/");
+      })
+      .catch((err) => {
+        console.log("user not found :", err);
+      });
+    // const res = await fetch("/api/auth/signin", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+    console.log("res =>", res);
+    // if (res.status === 200) {
+    //   alert("Logged In Successfully :))");
+    //   reset();
+    //   router.replace("/");
+    // } else if (res.status === 404) {
+    //   alert("User Not Found :))");
+    // } else if (res.status === 422) {
+    //   alert("username or password is not correct :((");
+    // } else if (res.status === 500) {
+    //   alert("...");
+    // }
   };
+  //Rout Protection / client side
+  useEffect(() => {
+    fetch("api/auth/me").then((res) => {
+      if (res.status === 200) {
+        router.replace("/");
+      }
+    });
+  }, []);
   return (
-    <div className="max-w-[500px] mx-auto my-auto">
+    <div className="max-w-[500px] mx-auto my-14">
+      {/* <h2 className="text-2xl font-extrabold">
+        برای مشاهده پروفایل باید اول وارد حساب کاربری خود شوید!
+      </h2> */}
       <form
         className="bg-white shadow-md rounded w-full px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit(onSubmit)}
@@ -21,16 +58,16 @@ export default function LogIn() {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="username"
+            htmlFor="identifier"
           >
             نام کاربری یا ایمیل
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
+            id="identifier"
             type="text"
             placeholder="نام کاربری یا ایمیل خود را وارد کنید"
-            {...register("username", { required: true })}
+            {...register("identifier", { required: true })}
           />
         </div>
         <div className="mb-6">
